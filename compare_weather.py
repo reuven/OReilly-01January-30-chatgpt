@@ -40,14 +40,41 @@ def get_differences(weather1, weather2):
         'precipitation_diff': abs(weather1['precipitation'] - weather2['precipitation'])
     }
 
+from rich.console import Console
+from rich.table import Table
+
 def print_differences(current_weather, destination_weather, differences):
-    print("\nWeather Comparison:\n")
-    print(f"Current City Temperature: {current_weather['temp']}°C, Destination City Temperature: {destination_weather['temp']}°C")
-    print(f"Temperature Difference: {differences['temp_diff']}°C")
-    print(f"Current City Humidity: {current_weather['humidity']}%, Destination City Humidity: {destination_weather['humidity']}%")
-    print(f"Humidity Difference: {differences['humidity_diff']}%")
-    print(f"Current City Precipitation: {current_weather['precipitation']}mm, Destination City Precipitation: {destination_weather['precipitation']}mm")
-    print(f"Precipitation Difference: {differences['precipitation_diff']}mm")
+    console = Console()
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Description", style="dim", width=20)
+    table.add_column("Current City")
+    table.add_column("Destination City")
+    table.add_column("Difference", justify="right")
+
+    # Add rows for temperature, humidity, and precipitation
+    temp_diff_color = "red" if differences['temp_diff'] > 0 else "blue"
+    table.add_row(
+        "Temperature (°C)",
+        f"{current_weather['temp']}",
+        f"{destination_weather['temp']}",
+        f"[{temp_diff_color}]{differences['temp_diff']}°C[/]"
+    )
+
+    table.add_row(
+        "Humidity (%)",
+        f"{current_weather['humidity']}",
+        f"{destination_weather['humidity']}",
+        f"{differences['humidity_diff']}%"
+    )
+
+    table.add_row(
+        "Precipitation (mm)",
+        f"{current_weather['precipitation']}",
+        f"{destination_weather['precipitation']}",
+        f"{differences['precipitation_diff']}mm"
+    )
+
+    console.print(table)
 
 if __name__ == '__main__':
     # Create the parser
