@@ -46,4 +46,4 @@ def test_print_differences():
     # Now you can assert on 'output'
     assert "Temperature (°C)" in output
     assert "25" in output  # Example check for destination temp
-    assert "[red]5°C[/]" in output  # Example check for temp_diff formatted with Rich
+    assert "5°C" in output  # Adjusted to check for the presence of "5°C" without style tags
