@@ -1,8 +1,6 @@
 # Data from my "Pair Programming with ChatGPT" course
 
-This repo contains the Jupyter notebook + program files from my training for O'Reilly in November 2023.  It'll remain open, so you can review the material later on. Also, I'll add the conversations from ChatGPT, so you can review those, as well.
-
-The transcript from our ChatGPT session is here: https://chat.openai.com/share/9729d6d3-3f26-404a-af1a-1729eab0fca2
+This repo contains the Jupyter notebook + program files from my training for O'Reilly in January 2024.  It'll remain open, so you can review the material later on. Also, I'll add the conversations from ChatGPT, so you can review those, as well.
 
 Enjoy!
 
