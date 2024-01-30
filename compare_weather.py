@@ -41,4 +41,10 @@ def get_city_weather(city_name):
         # Handle different types of errors (e.g., network error, timeout, etc.)
         print(f"Error fetching data from OpenWeatherMap: {e}")
 
-print(get_city_weather('Chicago'))
+if __name__ == '__main__':
+
+    current_city = input('Enter current city: ').strip()
+    current_weather = get_city_weather(current_city)
+
+
+    print(get_city_weather('Chicago'))
