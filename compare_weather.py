@@ -43,6 +43,18 @@ def get_differences(weather1, weather2):
 from rich.console import Console
 from rich.table import Table
 
+def get_temp_diff_color(difference):
+    if difference > 5:
+        return "bright_red"
+    elif difference > 0:
+        return "red"
+    elif difference < -5:
+        return "bright_blue"
+    elif difference < 0:
+        return "blue"
+    else:
+        return "white"
+
 def print_differences(current_weather, destination_weather, differences):
     console = Console()
     table = Table(show_header=True, header_style="bold magenta")
@@ -50,6 +62,9 @@ def print_differences(current_weather, destination_weather, differences):
     table.add_column("Current City")
     table.add_column("Destination City")
     table.add_column("Difference", justify="right")
+
+    # In the print_differences function, use this to determine the color
+    temp_diff_color = get_temp_diff_color(differences['temp_diff'])
 
     # Add rows for temperature, humidity, and precipitation
     temp_diff_color = "red" if differences['temp_diff'] > 0 else "blue"
