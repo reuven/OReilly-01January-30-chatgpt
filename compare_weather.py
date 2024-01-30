@@ -25,6 +25,8 @@ try:
     # Process the data (assuming JSON response)
     weather_data = r.json()
     # Now you can extract and use specific pieces of data from weather_data as needed
+    print(weather_data)
+
 
 except requests.exceptions.RequestException as e:
     # Handle different types of errors (e.g., network error, timeout, etc.)
