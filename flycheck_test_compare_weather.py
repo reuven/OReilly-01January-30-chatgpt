@@ -1,6 +1,7 @@
 import pytest
 import requests_mock
 from compare_weather import get_city_weather, get_differences, print_differences
+from rich.console import Console
 
 @pytest.fixture
 def api_key():
@@ -31,13 +32,18 @@ def test_get_differences():
     expected_diffs = {'temp_diff': 5, 'humidity_diff': 5, 'precipitation_diff': 2}
     assert get_differences(weather1, weather2) == expected_diffs
 
+def test_print_differences():
+    console = Console(record=True)
+    with console.capture() as capture:
+        current_weather = {'temp': 20, 'humidity': 50, 'precipitation': 2}
+        destination_weather = {'temp': 25, 'humidity': 55, 'precipitation': 0}
+        differences = {'temp_diff': 5, 'humidity_diff': 5, 'precipitation_diff': 2}
 
-def test_print_differences(capsys):  # capsys is a built-in pytest fixture that captures sys output
-    weather1 = {'temp': 20, 'humidity': 50, 'precipitation': 2}
-    weather2 = {'temp': 25, 'humidity': 55, 'precipitation': 0}
-    differences = {'temp_diff': 5, 'humidity_diff': 5, 'precipitation_diff': 2}
-    print_differences(weather1, weather2, differences)
-    captured = capsys.readouterr()  # Capture the print output
-    assert "Temperature Difference: 5°C" in captured.out
-    assert "Humidity Difference: 5%" in captured.out
-    assert "Precipitation Difference: 2mm" in captured.out
+        print_differences(current_weather, destination_weather, differences, console=console)
+
+    output = capture.get()
+
+    # Now you can assert on 'output'
+    assert "Temperature (°C)" in output
+    assert "25" in output  # Example check for destination temp
+    assert "[red]5°C[/]" in output  # Example check for temp_diff formatted with Rich
