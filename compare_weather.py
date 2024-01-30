@@ -24,6 +24,16 @@ try:
     r.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
 
     weather_data = r.json()
+    if 'main' in weather_data:
+        temperature = data['main']['temp']
+        humidity = data['main']['humidity']
+
+        if 'rain' in weather_data:
+            precipitation = data['rain']['1h']
+        else:
+            precipitation = 0
+
+
     print(weather_data)
 
 
