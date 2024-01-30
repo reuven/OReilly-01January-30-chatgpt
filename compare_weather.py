@@ -29,10 +29,9 @@ try:
         humidity = data['main']['humidity']
 
         if 'rain' in weather_data:
-            precipitation = data['rain']['1h']
+            precipitation = data['rain']['1h']  # if there's rain info, keep it
         else:
-            precipitation = 0
-
+            precipitation = 0   # no rain info? say that it's 0
 
     print(weather_data)
 
