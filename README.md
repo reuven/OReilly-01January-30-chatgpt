@@ -2,6 +2,8 @@
 
 This repo contains the Jupyter notebook + program files from my training for O'Reilly in January 2024.  It'll remain open, so you can review the material later on. Also, I'll add the conversations from ChatGPT, so you can review those, as well.
 
+ChatGPT transcript is here: https://chat.openai.com/share/d3afa297-d39d-4f45-a804-25dfa5d4556a
+
 Enjoy!
 
 If you liked this training, you might also like:
