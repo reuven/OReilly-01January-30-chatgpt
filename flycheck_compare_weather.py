@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import requests
+    import argparse
+
 import os  # Used for accessing environment variables
 
 api_key = os.getenv('OPENWEATHERMAP_API_KEY')
