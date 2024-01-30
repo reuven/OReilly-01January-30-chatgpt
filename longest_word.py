@@ -11,5 +11,10 @@ def longest_word(filename):
     return output
 
 if __name__ == '__main__':
-    filename_to_check = input('Enter filename: ').strip()
+    parser = argparse.ArgumentParser(description='Find the longest word in a file.')
+    parser.add_argument('-f', '--filename', required=True, help='The filename to check')
+
+    args = parser.parse_args()
+    filename_to_check = args.filename
+
     print(longest_word(filename_to_check))
