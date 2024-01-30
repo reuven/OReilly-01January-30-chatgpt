@@ -28,8 +28,10 @@ try:
         temperature = data['main']['temp']
         humidity = data['main']['humidity']
 
-
-        precipitation = data['rain']['1h'] if 'rain' in data else 0
+        if 'rain' in weather_data:
+            precipitation = data['rain']['1h']
+        else:
+            precii
         
 
     print(weather_data)
