@@ -18,11 +18,11 @@ def mock_response():
         }
     }
 
-def test_get_city_weather(api_key, mock_response):
+def test_get_city_weather(mock_response):
     city_name = "Test City"
     with requests_mock.Mocker() as m:
         m.get("http://api.openweathermap.org/data/2.5/weather", json=mock_response)
-        result = get_city_weather(city_name, api_key)
+        result = get_city_weather(city_name)
         assert result == {'temp': 20, 'humidity': 50, 'precipitation': 2}
 
 def test_get_differences():
