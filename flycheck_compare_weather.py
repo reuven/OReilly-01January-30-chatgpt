@@ -33,10 +33,9 @@ def get_city_weather(city_name):
             else:
                 precipitation = 0   # no rain info? say that it's 0
 
-        print({'temp':temperature,
-               'humidity':humidity,
-               'precipitation':precipitation})
-
+        return {'temp':temperature,
+                'humidity':humidity,
+                'precipitation':precipitation}
 
     except requests.exceptions.RequestException as e:
         # Handle different types of errors (e.g., network error, timeout, etc.)
