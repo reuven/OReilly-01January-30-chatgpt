@@ -47,6 +47,4 @@ if __name__ == '__main__':
     current_weather = get_city_weather(current_city)
 
     destination_city = input('Enter destination city: ').strip()
-    destination_w
-
-    print(get_city_weather('Chicago'))
+    destination_weather = get_city_weather(destination_city)
