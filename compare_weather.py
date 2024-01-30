@@ -5,10 +5,13 @@
 import requests
 import os  # Used for accessing environment variables
 
-# Ensure you have set your API key as an environment variable
 api_key = os.getenv('OPENWEATHERMAP_API_KEY')
 if not api_key:
     raise ValueError("No API key provided. Set the OPENWEATHERMAP_API_KEY environment variable.")
+
+def get_city_weather(city_name):
+
+
 
 base_url = 'http://api.openweathermap.org/data/2.5/weather'
 
