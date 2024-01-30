@@ -40,3 +40,5 @@ def get_city_weather(city_name):
     except requests.exceptions.RequestException as e:
         # Handle different types of errors (e.g., network error, timeout, etc.)
         print(f"Error fetching data from OpenWeatherMap: {e}")
+
+print(get_city_weather('Chicago'))
