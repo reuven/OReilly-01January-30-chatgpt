@@ -19,25 +19,25 @@ def get_city_weather(city_name):
         'units': 'metric'  # or 'imperial' for Fahrenheit
     }
 
-try:
-    r = requests.get(base_url, params=params)
-    r.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
+    try:
+        r = requests.get(base_url, params=params)
+        r.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
 
-    weather_data = r.json()
-    if 'main' in weather_data:
-        temperature = data['main']['temp']
-        humidity = data['main']['humidity']
+        weather_data = r.json()
+        if 'main' in weather_data:
+            temperature = data['main']['temp']
+            humidity = data['main']['humidity']
 
-        if 'rain' in weather_data:
-            precipitation = data['rain']['1h']  # if there's rain info, keep it
-        else:
-            precipitation = 0   # no rain info? say that it's 0
+            if 'rain' in weather_data:
+                precipitation = data['rain']['1h']  # if there's rain info, keep it
+            else:
+                precipitation = 0   # no rain info? say that it's 0
 
-    print({'temp':temperature,
-           'humidity':humidity,
-           'precipitation':precipitation)
+        print({'temp':temperature,
+               'humidity':humidity,
+               'precipitation':precipitation})
 
 
-except requests.exceptions.RequestException as e:
-    # Handle different types of errors (e.g., network error, timeout, etc.)
-    print(f"Error fetching data from OpenWeatherMap: {e}")
+    except requests.exceptions.RequestException as e:
+        # Handle different types of errors (e.g., network error, timeout, etc.)
+        print(f"Error fetching data from OpenWeatherMap: {e}")
