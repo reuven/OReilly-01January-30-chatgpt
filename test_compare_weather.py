@@ -1,6 +1,6 @@
 import pytest
 import requests_mock
-from your_script_name import get_city_weather, get_differences, print_differences  # Replace 'your_script_name' with the actual name of your Python script
+from compare_weather import get_city_weather, get_differences, print_differences
 
 @pytest.fixture
 def api_key():
@@ -40,5 +40,3 @@ def test_print_differences(capsys):  # capsys is a built-in pytest fixture that 
     assert "Temperature Difference: 5°C" in captured.out
     assert "Humidity Difference: 5%" in captured.out
     assert "Precipitation Difference: 2mm" in captured.out
-
-# Note: Replace 'your_script_name' with the actual name of your Python script
