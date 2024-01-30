@@ -4,7 +4,7 @@ from compare_weather import get_city_weather, get_differences, print_differences
 
 @pytest.fixture
 def api_key():
-    return "your_test_api_key"  # Use a dummy API key for testing
+    return "75e28cf00906095c31dc005c0ca6c38f"
 
 @pytest.fixture
 def mock_response():
