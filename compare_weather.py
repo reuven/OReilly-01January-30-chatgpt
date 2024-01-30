@@ -17,7 +17,7 @@ def get_city_weather(city_name):
 
     try:
         r = requests.get(base_url, params=params)
-        r.raise_for_status()  # Raises an HTTPError if the HTTP request returned an unsuccessful status code
+        r.raise_for_status()
         weather_data = r.json()
 
         temperature = humidity = precipitation = None
@@ -33,12 +33,20 @@ def get_city_weather(city_name):
         return None
 
 def get_differences(weather1, weather2):
-    differences = {
+    return {
         'temp_diff': abs(weather1['temp'] - weather2['temp']),
         'humidity_diff': abs(weather1['humidity'] - weather2['humidity']),
         'precipitation_diff': abs(weather1['precipitation'] - weather2['precipitation'])
     }
-    return differences
+
+def print_differences(current_weather, destination_weather, differences):
+    print("\nWeather Comparison:\n")
+    print(f"Current City Temperature: {current_weather['temp']}°C, Destination City Temperature: {destination_weather['temp']}°C")
+    print(f"Temperature Difference: {differences['temp_diff']}°C")
+    print(f"Current City Humidity: {current_weather['humidity']}%, Destination City Humidity: {destination_weather['humidity']}%")
+    print(f"Humidity Difference: {differences['humidity_diff']}%")
+    print(f"Current City Precipitation: {current_weather['precipitation']}mm, Destination City Precipitation: {destination_weather['precipitation']}mm")
+    print(f"Precipitation Difference: {differences['precipitation_diff']}mm")
 
 if __name__ == '__main__':
     current_city = input('Enter current city: ').strip()
@@ -47,11 +55,8 @@ if __name__ == '__main__':
     destination_city = input('Enter destination city: ').strip()
     destination_weather = get_city_weather(destination_city)
 
-    if current_weather and destination_weather:  # Ensure both weather data are valid
+    if current_weather and destination_weather:
         differences = get_differences(current_weather, destination_weather)
-        print(f"Differences between {current_city} and {destination_city}:")
-        print(f"Temperature Difference: {differences['temp_diff']}°C")
-        print(f"Humidity Difference: {differences['humidity_diff']}%")
-        print(f"Precipitation Difference: {differences['precipitation_diff']}mm")
+        print_differences(current_weather, destination_weather, differences)
     else:
         print("Failed to retrieve weather data for one or both cities.")
