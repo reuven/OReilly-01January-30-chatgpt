@@ -39,7 +39,7 @@ def test_print_differences():
         destination_weather = {'temp': 25, 'humidity': 55, 'precipitation': 0}
         differences = {'temp_diff': 5, 'humidity_diff': 5, 'precipitation_diff': 2}
 
-        print_differences(current_weather, destination_weather, differences)
+        print_differences(current_weather, destination_weather, differences, )
 
     output = capture.get()
 
