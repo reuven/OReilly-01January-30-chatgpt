@@ -55,8 +55,10 @@ def get_temp_diff_color(difference):
     else:
         return "white"
 
-def print_differences(current_weather, destination_weather, differences):
-    console = Console()
+def print_differences(current_weather, destination_weather, differences, console=None):
+    if console is None:
+        console = Console()
+
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("Description", style="dim", width=20)
     table.add_column("Current City")
