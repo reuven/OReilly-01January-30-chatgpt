@@ -8,4 +8,4 @@ params = {'q':'Chicago',
           'appid':api_key,
           'units':metric}
 
-r = requests.get(
+r = requests.get(base_url, params=params)
